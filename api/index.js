@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { model } = require("./models/users");
 const cors = require('cors');
 const PORT = 27017;
-const DATABASE_URL = mongodb+srv://admin:marvelouscranes@cranecluster.6taew.mongodb.net/craneCluster?retryWrites=true&w=majority;
+const DATABASE_URL = "mongodb+srv://admin:marvelouscranes@cranecluster.6taew.mongodb.net/craneCluster?retryWrites=true&w=majority";
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
