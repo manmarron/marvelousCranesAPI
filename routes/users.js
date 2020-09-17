@@ -3,7 +3,7 @@ const router = express();
 const User = require("../models/users");
 
 //create new user
-router.post("/users", async (req,res) => {
+router.post("/", async (req,res) => {
     const user = await User({
         username: req.body.username,
         emailAddress: req.body.emailAddress,
