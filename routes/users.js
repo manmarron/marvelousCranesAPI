@@ -19,10 +19,11 @@ router.post("/users", async (req,res) => {
     };
 
 })
-router.get("/users", (req, res, next) => {
+
+//check site is running
+router.get("/", (req, res) => {
     res.status(400).json({ message: "site running" });
   });
-
 //User Login
 router.post("/login", function(req,res) {
     User.findOne({ username: req.body.username }).then((user) =>{
