@@ -19,6 +19,9 @@ router.post("/users", async (req,res) => {
     };
 
 })
+router.get("/users", (req, res, next) => {
+    res.status(400).json({ message: "site running" });
+  });
 
 //User Login
 router.post("/login", function(req,res) {
