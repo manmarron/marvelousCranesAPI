@@ -5,15 +5,13 @@ const Crane = require("../models/cranes");
 //create new Crane
 router.post("/addCrane", async (req,res) => {
     const crane = await Crane({
-        craneName: req.body.craneName,
+        craneCaption: req.body.craneCaption,
         craneDescription: req.body.craneDescription,
-        craneCity: req.body.craneCity,
         craneLatitude: req.body.craneLatitude,
         craneLongitude: req.body.craneLongitude,
         craneUser: req.body.craneUser,
         craneRate: req.body.craneRate,
         craneBackgroundRate:  req.body.craneBackgroundRate,
-        craneCaption: req.body.craneCaption
     })
 
     try {

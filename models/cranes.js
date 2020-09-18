@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const cranesSchema = new mongoose.Schema({
-    craneName: {
+    craneCaption: {
         type: String,
         required: true,
         lowercase: true,
@@ -9,10 +9,6 @@ const cranesSchema = new mongoose.Schema({
         unique: true
     },
     craneDescription: {
-        type: String,
-        required: true
-    },
-    craneCity: {
         type: String,
         required: true
     },
@@ -42,11 +38,7 @@ const cranesSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    craneCaption: {
-        type: String,
-        required: true,
-        trim: true
-    }
+
 });
 
 const Crane = mongoose.model("Crane", cranesSchema);
