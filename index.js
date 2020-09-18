@@ -21,8 +21,12 @@ db.once("open", () => console.log("Connected to DB"));
 app.use(express.json());
 
 const usersRouter = require("./routes/users");
+const craneRouter = require("./routes/cranes");
 app.use("/", usersRouter);
+app.use("/", craneRouter);
 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Listening on ${PORT}`);
+
+
 });
