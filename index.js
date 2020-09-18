@@ -23,6 +23,6 @@ app.use(express.json());
 const usersRouter = require("./routes/users");
 app.use("/", usersRouter);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Listening on ${PORT}`);
 });
