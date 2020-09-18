@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { model } = require("./models/users");
 const cors = require('cors');
 const PORT = 5000;
-require('./database');
+
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
