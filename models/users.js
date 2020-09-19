@@ -29,6 +29,10 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         set: (password) => bcrypt.hashSync(password, 10),
     },
+    dateCreated: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 usersSchema.methods.validatePassword = function validatePassword(password) {
