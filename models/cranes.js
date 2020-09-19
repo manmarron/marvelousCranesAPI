@@ -33,11 +33,11 @@ const cranesSchema = new mongoose.Schema({
         required: true
     },
     craneRate: {
-        type: Number,
+        type: String,
         required: true
     },
     craneBackgroundRate: {
-        type: Number,
+        type: String,
         required: true
     },
     dateCreated: {
