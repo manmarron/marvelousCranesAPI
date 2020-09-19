@@ -12,15 +12,17 @@ const cranesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    craneLatitude:{
-        type: String,
-        lowercase: true,
-        trim: true
-    },
-    craneLongitude:{
-        type: String,
-        lowercase: true,
-        trim: true
+    markers: {
+        craneLatitude:{
+            type: String,
+            lowercase: true,
+            trim: true
+        },
+        craneLongitude:{
+            type: String,
+            lowercase: true,
+            trim: true
+        },
     },
     craneUser: {
         type: String,
