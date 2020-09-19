@@ -7,8 +7,7 @@ router.post("/addCrane", async (req,res) => {
     const crane = await Crane({
         craneCaption: req.body.craneCaption,
         craneDescription: req.body.craneDescription,
-        craneLatitude: req.body.craneLatitude,
-        craneLongitude: req.body.craneLongitude,
+        markers: req.body.markers,
         craneUser: req.body.craneUser,
         craneRate: req.body.craneRate,
         craneBackgroundRate:  req.body.craneBackgroundRate,
