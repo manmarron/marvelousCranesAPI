@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express();
 const User = require("../models/users");
+const jwt = require("jwt-simple");
+const JWT_SECRET = "cranes";
+
 
 //create new user
 router.post("/users", async (req,res) => {
@@ -24,6 +27,9 @@ router.post("/users", async (req,res) => {
 router.get("/", (req, res) => {
     res.status(400).json({ message: "site running" });
   });
+
+
+
 //User Login
 router.post("/login", function(req,res) {
     User.findOne({ username: req.body.username }).then((user) =>{
@@ -33,7 +39,9 @@ router.post("/login", function(req,res) {
             })
         } else {
             if(user.validatePassword(req.body.password)) {
-                res.status(200).json(user)
+                //var token = jwt.encode(user, JWT_SECRET);
+                //res.status(200).json({token: token});
+                res.status(200).json(user);
                 //jwt token/cookies - remember me log in
             } else {
                 res.status(401).json({
