@@ -47,6 +47,6 @@ const cranesSchema = new mongoose.Schema({
 
 });
 
-const Crane = mongoose.model("Crane", cranesSchema);
+const CraneModel = mongoose.model("Crane", cranesSchema);
 
-module.exports = Crane;
+module.exports = CraneModel;

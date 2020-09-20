@@ -2,31 +2,31 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const { model } = require("./models/users");
 const cors = require('cors');
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;
+const db = mongoose.connection;
+const CraneRouter = require("./routes/cranes");
+const usersRouter = require("./routes/users");
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
 });
-const db = mongoose.connection;
+
 app.use(cors({ credentials: true, origin: true }));
-app.options('*', cors());
-db.on("error", (err) => console.error(err));
-db.once("open", () => console.log("Connected to DB"));
-
 app.use(express.json());
+app.options('*', cors());
 
-const usersRouter = require("./routes/users");
-const craneRouter = require("./routes/cranes");
-app.use("/", usersRouter);
-app.use("/", craneRouter);
-
-app.listen(process.env.PORT || 5000, () => {
-    console.log(`Listening on ${PORT}`);
-
-
+db.on("error", (err) => console.error(err));
+db.once("open", () => {
+    console.log("Connected to DB")
+    app.listen(PORT, () => {
+        console.log(`Listening on ${PORT}`);
+        //app.use("/api/v2/Static", express.static("public"));
+        app.use("/", CraneRouter);
+        app.use("/", usersRouter);
+    });
 });
+
+module.exports = app;
