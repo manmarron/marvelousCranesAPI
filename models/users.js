@@ -29,7 +29,7 @@ const usersSchema = new mongoose.Schema({
         trim: true,
         set: (password) => bcrypt.hashSync(password, 10),
     },
-    dateCreated: {
+    MemberSince: {
         type: Date,
         default: Date.now
     },
