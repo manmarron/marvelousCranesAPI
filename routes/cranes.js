@@ -7,6 +7,8 @@ router
   .get("/cranes", CraneController.query)
   .get("/:id/cranes", CraneController.getById)
   .get("/cranes/:userName", CraneController.getByUserName)
+  .get("/:id/craneLikes", CraneController.getByLikes)
+
 
   .patch("/:id", CraneController.updatedCrane)
   .delete("/:id", CraneController.deleteCrane);

@@ -51,5 +51,18 @@ router.post("/login", function(req,res) {
     });
 });
 
+  //get number of likes for user
+/*exports.getByLikes = (req, res) => {
+    const id = req.params.id;
+  
+    CraneModel
+    .findById(id)
+    .select("craneLikes")
+      .then((crane) => res.status(200).json(crane))
+      .catch((err) => res.status(404).json({ error: "Crane not found." }));
+  };
+   
+  //get number of likes by user*/
+
 
 module.exports = router;
