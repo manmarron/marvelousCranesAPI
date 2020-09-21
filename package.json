@@ -10,7 +10,6 @@
   "engines": {
     "node": "12.x"
   },
-  "proxy": "https://test-crane.herokuapp.com/login",
   "author": "",
   "license": "ISC",
   "dependencies": {
