@@ -59,7 +59,7 @@ exports.deleteCrane = (req, res) => {
 };
 
 
-/*exports.query = (req, res) => {
+exports.query = (req, res) => {
   let query, sort;
 
   req.query.query ? (query = JSON.parse(req.query.query)) : (query = {});
@@ -69,7 +69,7 @@ exports.deleteCrane = (req, res) => {
     .sort(sort)
     .then((properties) => res.status(200).json(properties))
     .catch((err) => res.status(404).json(err));
-};*/
+};
 
 
 /*exports.queryByLocation = (req, res) => {

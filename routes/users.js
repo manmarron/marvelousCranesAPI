@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express();
 const User = require("../models/users");
-const jwt = require("jwt-simple");
-const JWT_SECRET = "cranes";
+//const jwt = require("jwt-simple");
+//const JWT_SECRET = "cranes";
 
 
 //create new user
@@ -35,8 +35,8 @@ router.post("/login", function(req,res) {
             })
         } else {
             if(user.validatePassword(req.body.password)) {
-                var token = jwt.encode(user, JWT_SECRET);
-                res.status(200).json({token: token});
+                //var token = jwt.encode(user, JWT_SECRET);
+                //res.status(200).json({token: token});
                 res.status(200).json(user);
                 //jwt token/cookies - remember me log in
             } else {
