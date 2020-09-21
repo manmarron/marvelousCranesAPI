@@ -33,6 +33,12 @@ const usersSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    LikesReceived: {
+        type: Number
+    },
+    LikesSent: {
+        type: Number
+    }
 });
 
 usersSchema.methods.validatePassword = function validatePassword(password) {

@@ -23,12 +23,8 @@ router.post("/users", async (req,res) => {
 
 })
 
+
 //check site is running
-router.get("/", (req, res) => {
-    res.status(400).json({ message: "site running" });
-  });
-
-
 
 //User Login
 router.post("/login", function(req,res) {
@@ -39,8 +35,8 @@ router.post("/login", function(req,res) {
             })
         } else {
             if(user.validatePassword(req.body.password)) {
-                //var token = jwt.encode(user, JWT_SECRET);
-                //res.status(200).json({token: token});
+                var token = jwt.encode(user, JWT_SECRET);
+                res.status(200).json({token: token});
                 res.status(200).json(user);
                 //jwt token/cookies - remember me log in
             } else {
