@@ -13,7 +13,6 @@ exports.create = async (req, res) => {
       .catch((err) => res.status(400).json(err));
   };
 
-
 //User Login
 
 exports.LogUserIn = async (req, res) => {
@@ -37,3 +36,75 @@ exports.LogUserIn = async (req, res) => {
         }
     })
 }
+
+//get user by id
+exports.getById = (req, res) => {
+    const id = req.params.id;
+  
+    User.findById(id)
+      .then((user) => res.status(200).json(user))
+      .catch((err) => res.status(404).json({ error: "user not found." }));
+  };
+
+//get by username
+exports.getByUserName = (req, res) => {
+    const userName = req.params.username;
+    User
+      .find({"username" : userName })
+      .then(
+        (user) => res.status(200).json(user)
+        )
+      .catch(
+        (err) => res.status(404).json({ error: "user not found." })
+        );
+  };
+
+//get number of likes for user
+exports.getByLikes = (req, res) => {
+    const id = req.params.id;
+    User
+    .findById(id)
+    .select("LikesReceived LikesSent")
+      .then((user) => res.status(200).json(user))
+      .catch((err) => res.status(404).json({ error: "user not found." }));
+  };
+
+//update user by userID
+exports.UpdateByID = (req, res) => {
+const id = req.params.id;
+User.findByIdAndUpdate(id, req.body, { new: true })
+    .then((updated) => res.status(200).json(updated))
+    .catch((err) =>
+    res.status(400).json({ error: "User could not be updated." })
+    );
+};
+  
+//update likes sent by userID
+exports.updatedSentLikes = (req, res) => {
+    const id = req.params.id;
+    User.findByIdAndUpdate(id, req.body, { new: true })
+      .then((updated) => res.status(200).json(updated))
+      .catch((err) =>
+        res.status(400).json({ error: "User could not be updated." })
+      );
+  };
+
+  //update likes received by userID
+  exports.updatedRecLikes = (req, res) => {
+    const id = req.params.id;
+    User.findByIdAndUpdate(id, req.body, { new: true })
+      .then((updated) => res.status(200).json(updated))
+      .catch((err) =>
+        res.status(400).json({ error: "User could not be updated." })
+      );
+  };
+
+//delete crane by id
+exports.deleteUser = (req, res) => {
+    const id = req.params.id;
+    User.findByIdAndRemove(id)
+      .then((removed) => res.status(200).json(removed))
+      .catch((err) =>
+        res.status(400).json({ error: "user could not be deleted" })
+      );
+  };
