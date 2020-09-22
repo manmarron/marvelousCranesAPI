@@ -41,7 +41,7 @@ const cranesSchema = new mongoose.Schema({
         required: true
     },
     dateCreated: {
-        type: Array
+        type: Date
     },
     craneLikes: {
         type: Number
