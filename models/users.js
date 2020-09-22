@@ -30,8 +30,7 @@ const usersSchema = new mongoose.Schema({
         set: (password) => bcrypt.hashSync(password, 10),
     },
     MemberSince: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     LikesReceived: {
         type: Number
