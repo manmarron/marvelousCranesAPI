@@ -10,18 +10,22 @@ exports.create = async (req, res) => {
 
 //get crane by ID
 exports.getById = (req, res) => {
-  const id = req.params.id;
+  const craneID = JSON.parse(req.query.id);
 
-  CraneModel.findById(id)
+  CraneModel.find({
+    "_id" : craneID
+  })
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
 };
 
 //get all cranes for 1 user
 exports.getByUserName = (req, res) => {
-  const userName = req.params.userName;
+  const userName = JSON.parse(req.query.craneUser);
   CraneModel
-    .find({"craneUser" : userName })
+    .find({
+      "craneUser" : userName
+    })
     .then(
       (crane) => res.status(200).json(crane)
       )
@@ -32,16 +36,17 @@ exports.getByUserName = (req, res) => {
 
 //get number of likes for crane
 exports.getByLikes = (req, res) => {
-  const id = req.params.id;
-  CraneModel
-  .findById(id)
+  const craneID = JSON.parse(req.query.id);
+  CraneModel.find({
+    "_id" : craneID
+  })
   .select("craneLikes")
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
 };
 //patch crane by id
 exports.updatedCrane = (req, res) => {
-  const id = req.params.id;
+  const id = JSON.parse(req.query.id);
   CraneModel.findByIdAndUpdate(id, req.body, { new: true })
     .then((updated) => res.status(200).json(updated))
     .catch((err) =>
@@ -50,7 +55,7 @@ exports.updatedCrane = (req, res) => {
 };
 //delete crane by id
 exports.deleteCrane = (req, res) => {
-  const id = req.params.id;
+  const id = JSON.parse(req.query.id);
   CraneModel.findByIdAndRemove(id)
     .then((removed) => res.status(200).json(removed))
     .catch((err) =>
@@ -71,10 +76,45 @@ exports.query = (req, res) => {
     .catch((err) => res.status(404).json(err));
 };
 
+//filter on both rating
 
-/*exports.queryByLocation = (req, res) => {
-  const query = req.params.location;
-  CraneModel.find({ city: query })
-    .then((result) => res.status(200).json(result))
-    .catch((err) => console.log(err));
-};*/
+exports.getByAllRatings = (req, res) => {
+  const lowerRate = req.query.bottomRate;
+  const higherRate = req.query.topRate;
+  const lowerRateC = req.query.bottomRateCrane;
+  const higherRateC = req.query.topRateCrane;
+
+  CraneModel
+    .find({
+      craneBackgroundRate: { $gte: lowerRate, $lte: higherRate },
+      craneRate: { $gte: lowerRateC, $lte: higherRateC }
+    })
+    .then((crane) => res.status(200).json(crane))
+    .catch((err) => res.status(404).json({ error: "Crane not found." }));
+};
+
+//filter on crane rating
+exports.getByCraneRatings = (req, res) => {
+  const lowerRate = req.query.bottomRate
+  const higherRate = req.query.topRate
+  
+  CraneModel
+    .find({
+      "craneRate" : {"$gte" : lowerRate, "$lte" : higherRate}
+    })
+  .then((crane) => res.status(200).json(crane))
+  .catch((err) => res.status(404).json({ error: "Crane not found." }));
+};
+
+//filter on bkground rating
+exports.getByBkGrdRating = (req, res) => {
+  const lowerRate = req.query.bottomRate
+  const higherRate = req.query.topRate
+  
+  CraneModel
+    .find({
+      "craneBackgroundRate" : {"$gte" : lowerRate, "$lte" : higherRate}
+    })
+    .then((crane) => res.status(200).json(crane))
+    .catch((err) => res.status(404).json({ error: "Crane not found." }));
+};
