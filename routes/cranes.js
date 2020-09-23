@@ -13,6 +13,8 @@ router
   .get("/craneRatings", CraneController.getByCraneRatings)
   .get("/bkGroundRatings", CraneController.getByBkGrdRating)
   .get("/AllRatings", CraneController.getByAllRatings)
+  .patch("/Increment", CraneController.updateLikes)
+
 
 
   module.exports = router;

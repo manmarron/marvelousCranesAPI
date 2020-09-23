@@ -44,6 +44,8 @@ exports.getByLikes = (req, res) => {
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
 };
+
+
 //patch crane by id
 exports.updatedCrane = (req, res) => {
   const id = JSON.parse(req.query.id);
@@ -53,6 +55,9 @@ exports.updatedCrane = (req, res) => {
       res.status(400).json({ error: "crane could not be updated." })
     );
 };
+
+
+
 //delete crane by id
 exports.deleteCrane = (req, res) => {
   const id = JSON.parse(req.query.id);
@@ -117,4 +122,17 @@ exports.getByBkGrdRating = (req, res) => {
     })
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
+};
+
+
+
+//get number of likes for crane
+
+exports.updateLikes = (req, res) => {
+  const id = JSON.parse(req.query.id);
+  CraneModel.findByIdAndUpdate(id, req.body, { new: true })
+    .then((updated) => res.status(200).json(updated))
+    .catch((err) =>
+      res.status(400).json({ error: "crane could not be updated." })
+    );
 };
