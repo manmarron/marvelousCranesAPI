@@ -5,7 +5,8 @@ const UserController = require("../controllers/users");
 router
   .post("/Users", UserController.create)
   .post("/login", UserController.LogUserIn)
-  
+
+//need reworking
   .get("/:id/users", UserController.getById)
   .get("/:username/user", UserController.getByUserName)
   .get("/users/:id", UserController.getByLikes)
@@ -13,5 +14,8 @@ router
   .patch("/sent/:id", UserController.updatedSentLikes)
   .patch("/recvd/:id", UserController.updatedRecLikes)
   .delete("/delete/:id", UserController.deleteUser)
+// ^^
+
+  .patch("/incrementUserLike", UserController.updateLikes)
 
   module.exports = router;

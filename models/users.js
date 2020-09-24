@@ -32,10 +32,6 @@ const usersSchema = new mongoose.Schema({
     MemberSince: {
         type: Date
     },
-    LikesReceived: {
-        type: Number,
-        default: 0
-    },
     LikesSent: {
         type: Number,
         default: 0

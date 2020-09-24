@@ -108,3 +108,15 @@ exports.deleteUser = (req, res) => {
         res.status(400).json({ error: "user could not be deleted" })
       );
   };
+
+
+  //get number of likes for crane
+
+exports.updateLikes = (req, res) => {
+  const id = JSON.parse(req.query.id);
+  User.findByIdAndUpdate(id, req.body, { new: true })
+    .then((updated) => res.status(200).json(updated))
+    .catch((err) =>
+      res.status(400).json({ error: "crane could not be updated." })
+    );
+};
