@@ -33,10 +33,12 @@ const usersSchema = new mongoose.Schema({
         type: Date
     },
     LikesReceived: {
-        type: Number
+        type: Number,
+        default: 0
     },
     LikesSent: {
-        type: Number
+        type: Number,
+        default: 0
     }
 });
 
