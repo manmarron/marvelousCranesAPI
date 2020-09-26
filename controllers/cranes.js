@@ -70,10 +70,10 @@ exports.deleteCrane = (req, res) => {
 
 
 exports.query = (req, res) => {
-  let query, sort;
+  let query
 
   req.query.query ? (query = JSON.parse(req.query.query)) : (query = {});
-  req.query.sort ? (sort = JSON.parse(req.query.sort)) : (sort = {});
+  
 
   CraneModel.find(query)
     
