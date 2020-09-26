@@ -76,7 +76,7 @@ exports.query = (req, res) => {
   req.query.sort ? (sort = JSON.parse(req.query.sort)) : (sort = {});
 
   CraneModel.find(query)
-    .sort(sort)
+    
     .then((properties) => res.status(200).json(properties))
     .catch((err) => res.status(404).json(err));
 };

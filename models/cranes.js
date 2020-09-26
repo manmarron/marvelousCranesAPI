@@ -47,7 +47,10 @@ const cranesSchema = new mongoose.Schema({
     craneLikes: {
         type: Number,
         default: 0
-    }
+    },
+    image: {
+        type: String
+      },
 
 });
 
