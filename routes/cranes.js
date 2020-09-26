@@ -5,6 +5,7 @@ const CraneController = require("../controllers/cranes");
 router
   .post("/addCrane", CraneController.create)
   .get("/cranes", CraneController.query)
+  .get("/all", CraneController.getAll)
   .get("/craneID", CraneController.getById)
   .get("/craneUser", CraneController.getByUserName)
   .get("/craneLikes", CraneController.getByLikes)
@@ -13,8 +14,6 @@ router
   .get("/craneRatings", CraneController.getByCraneRatings)
   .get("/bkGroundRatings", CraneController.getByBkGrdRating)
   .get("/AllRatings", CraneController.getByAllRatings)
-  .patch("/Increment", CraneController.updateLikes)
+  .patch("/Increment", CraneController.updateLikes);
 
-
-
-  module.exports = router;
+module.exports = router;
