@@ -24,7 +24,6 @@ db.once("open", () => {
     console.log("Connected to DB")
     app.listen(PORT, () => {
         console.log(`Listening on ${PORT}`);
-        //app.use("/api/v2/Static", express.static("public"));
         app.use("/", CraneRouter);
         app.use("/", usersRouter);
        // app.use("/", imageRouter);

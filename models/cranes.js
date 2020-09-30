@@ -26,7 +26,7 @@ const cranesSchema = new mongoose.Schema({
             required: true
         },
     },
-    craneUser: {
+    userID: {
         type: String,
         lowercase: true,
         trim: true,
