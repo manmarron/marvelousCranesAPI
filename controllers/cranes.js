@@ -27,7 +27,7 @@ exports.getAll = (req, res) => {
 
 //get all cranes for 1 user
 exports.getByUserName = (req, res) => {
-  const userID = req.query.userID;
+  const userID = req.query.userId;
   CraneModel.find({
     craneUser: userID,
   })
