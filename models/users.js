@@ -35,6 +35,9 @@ const usersSchema = new mongoose.Schema({
     LikesSent: {
         type: Number,
         default: 0
+    },
+    image:{
+        type: String,
     }
 });
 
