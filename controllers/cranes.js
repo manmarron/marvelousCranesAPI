@@ -27,10 +27,8 @@ exports.getAll = (req, res) => {
 
 //get all cranes for 1 user
 exports.getByUserName = (req, res) => {
-  const userID = req.query.userId;
-  CraneModel.find({
-    userID: userID,
-  })
+const UserId = req.query.userID
+  CraneModel.find({"userID" : UserId})
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
 };
