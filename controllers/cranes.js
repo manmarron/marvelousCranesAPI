@@ -29,7 +29,7 @@ exports.getAll = (req, res) => {
 exports.getByUserName = (req, res) => {
   const userID = req.query.userId;
   CraneModel.find({
-    craneUser: userID,
+    userID: userID,
   })
     .then((crane) => res.status(200).json(crane))
     .catch((err) => res.status(404).json({ error: "Crane not found." }));
