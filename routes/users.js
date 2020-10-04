@@ -7,9 +7,10 @@ const jwt = require("jsonwebtoken");
 
   
 
-  app.use(cors({ credentials: true, origin: true }));
-app.use(express.json());
-app.options('*', cors());
+router.use(cors({ credentials: true, origin: true }));
+router.use(express.json());
+router.options('*', cors());
+
 router
 //need reworking
   .post("/Users", UserController.create)
