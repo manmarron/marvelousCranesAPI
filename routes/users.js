@@ -5,13 +5,14 @@ const UserController = require("../controllers/users");
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
 
-  .post("/Users", UserController.create)
+  
 
   app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 app.options('*', cors());
 router
 //need reworking
+  .post("/Users", UserController.create)
   .get("/:id/users", UserController.getById)
   .get("/:username/user", UserController.getByUserName)
   .get("/users/:id", UserController.getByLikes)
@@ -19,7 +20,6 @@ router
   .patch("/sent/:id", UserController.updatedSentLikes)
   .patch("/recvd/:id", UserController.updatedRecLikes)
   .delete("/delete/:id", UserController.deleteUser)
-
   .patch("/incrementUserLike", UserController.updateLikes)
 
   //.post("/login", UserController.LogUserIn)
