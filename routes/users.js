@@ -1,11 +1,15 @@
 const express = require("express");
 const router = express();
+const cors = require('cors');
 const UserController = require("../controllers/users");
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
 router
   .post("/Users", UserController.create)
-  
+
+  app.use(cors({ credentials: true, origin: true }));
+app.use(express.json());
+app.options('*', cors());
 
 //need reworking
   .get("/:id/users", UserController.getById)
