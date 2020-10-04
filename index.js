@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 const db = mongoose.connection;
 const CraneRouter = require("./routes/cranes");
 const usersRouter = require("./routes/users");
-//const imageRouter = require("./controllers/images");
+
 
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,

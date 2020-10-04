@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express();
 const User = require("../models/users");
-//const jwt = require("jwt-simple");
+const jwt = require("jsonwebtoken");
 //const JWT_SECRET = "cranes";
 
 
@@ -15,8 +15,10 @@ exports.create = async (req, res) => {
 
 //User Login
 
-exports.LogUserIn = async (req, res) => {
+/*exports.LogUserIn = async (req, res) => {
     const params = { ...req.body};
+    const username = req.body.username
+    const newUser = { username: username}
     User.findOne({ username: req.body.username }).then((user) => {
         if(!user) {
             res.status(401).json({
@@ -24,8 +26,10 @@ exports.LogUserIn = async (req, res) => {
             })
         } else {
             if(user.validatePassword(req.body.password)) {
-                //var token = jwt.encode(user, JWT_SECRET);
-                //res.status(200).json({token: token});
+                authenticateToken()
+                const accessToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_SECRET)
+                res.json({ accessToken: accessToken})
+                
                 res.status(200).json(user);
                 //jwt token/cookies - remember me log in
             } else {
@@ -35,7 +39,10 @@ exports.LogUserIn = async (req, res) => {
             }
         }
     })
-}
+}*/
+
+
+
 
 //get user by id
 exports.getById = (req, res) => {
