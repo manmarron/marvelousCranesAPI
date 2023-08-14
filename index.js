@@ -15,7 +15,9 @@ mongoose.connect(process.env.DATABASE_URL, {
     useCreateIndex: true
 });
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));;
 app.use(express.json());
 app.options('*', cors());
 
